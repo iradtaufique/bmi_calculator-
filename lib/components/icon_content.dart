@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 //this is a reusable Icon that will go in all cards
 class IconContent extends StatelessWidget {

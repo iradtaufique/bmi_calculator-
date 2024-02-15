@@ -3,9 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
+import '../components/bottom_button.dart';
+import '../components/icon_content.dart';
+import '../components/reusable_card.dart';
+import '../components/round_icon.dart';
+import '../constants.dart';
+import '../screens/result.dart';
 
 // Using Enum to create the genders
 
@@ -20,7 +23,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 160;
   int weight = 60;
-  int age = 1;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -216,35 +219,20 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              height: kBottomContainerHeight,
-              width: double.infinity,
-            )
+            BottomButton(
+              buttonText: 'CALCULATE',
+              onTop: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultPage();
+                    },
+                  ),
+                );
+              },
+            ),
           ],
         ));
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed});
-
-  final IconData? icon;
-  final Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 0.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      onPressed: onPressed,
-      child: Icon(icon),
-    );
   }
 }
